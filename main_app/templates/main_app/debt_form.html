@@ -1,0 +1,31 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#debt">
+  Я возвращаю долг...
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="debt" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        Диана, где деньги?
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form name="PaymentForm" method="POST">{% csrf_token %}
+          <label for="when">Когда?</label>
+          <input type="date" name="when">
+          <label for="how_much">Сколько?</label>
+          <input type="text" name="how_much" placeholder="$$$">
+          <div class="modal-footer">
+            <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Не сегодня...</button> -->
+            <button type="submit" class="btn btn-success" >Вернуть Долг</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

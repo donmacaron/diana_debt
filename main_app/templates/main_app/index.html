@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block payments %}
+<div class="container-fluid">
+  {% if payments %}
+  <h1 class="text-center"><strong>Выплачено</strong></h1>
+  <div class="row">
+    {% for p in payments %}
+    <div class="container text-center col-sm payments border border-success payments">
+      <p>{{p.when}}</p>
+      {{p.how_much}} р.
+    </div>
+  {% endfor %}
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

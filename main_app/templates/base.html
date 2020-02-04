@@ -1,0 +1,47 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <title>ГОСДОЛГ ДИАНЫ</title>
+  </head>
+  <body>
+      <div class="container-fluid text-center">
+        <img src="{% static 'img/logo2.png' %}" class="img-fluid logo" alt="Responsive image">
+      </div>
+      <div class="container-fluid text-center upper-block">
+        <h1><strong>{{ debt.debt }}</strong> рублей</h1>
+        осталось выплатить: {{ final_debt }}
+      </div>
+      <div class="content">
+        <div class="conainer-fluid">
+          {% block payments %}
+          {% endblock %}
+        </div>
+
+        <div class="conainer-fluid text-center">
+        </div>
+
+      </div>
+      <footer class="page-footer font-small">
+        <div class="text-center py-3">
+          {% if user.is_authenticated %}
+          {% include "main_app/debt_form.html" %}
+            <button type="button" class="btn btn-danger" data-toggle="modal">
+              Выйти
+            </button>
+          {% else %}
+            {% include "main_app/login_form.html" %}
+          {% endif %}
+        </div>
+        <div class="text-center py-3">
+          don_macaron, 2019
+        </div>
+      </footer>
+  </body>
+</html>
